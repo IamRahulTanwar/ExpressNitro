@@ -1,0 +1,23 @@
+{
+  "name": "ExpressNitro",
+  "version": "1.0.0",
+  "description": "Speed Up Your REST Api Production",
+  "main": "index.js",
+  "start": "node index.js",
+  "scripts": {},
+  "author": "Rahul Tanwar <mr.rahultanwar@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.2",
+    "cors": "^2.8.5",
+    "create-file": "^1.0.1",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "group-by": "0.0.1",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.1",
+    "nodemon": "^1.19.2"
+  }
+}
