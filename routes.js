@@ -1,8 +1,6 @@
 const exportRoutes = [];
 
-let routes = [
-require('./routes/user.routes')
-];
+let routes = [require("./app/User/user.routes")];
 
 routes.filter(route => {
   exportRoutes.push(...route);

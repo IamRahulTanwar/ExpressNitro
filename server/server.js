@@ -3,6 +3,8 @@ var bodyParser = require("body-parser");
 var cors = require("cors");
 const dotenv = require("dotenv");
 const db = require("../db/db");
+const _app_folder = process.env.siteroot || 'dashboard';
+
 // collect request info
 var requests = [];
 
@@ -33,6 +35,13 @@ app.get("/api-docs", function(req, res) {
     routes: routes
   };
   res.render("api", locals);
+});
+// ---- SERVE STATIC FILES ---- //
+app.get("*.*", express.static(_app_folder, { maxAge: "1y" }));
+
+// ---- SERVE APLICATION PATHS ---- //
+app.all("*", function(req, res) {
+  res.status(200).sendFile(`/`, { root: _app_folder });
 });
 //
 // ─── START SERVER ───────────────────────────────────────────────────────────────

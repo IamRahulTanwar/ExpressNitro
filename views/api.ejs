@@ -116,6 +116,9 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"
         ><%= locals.title %></a
       >
+      <b class="badge badge-light mr-3" style="font-size: 25px;"
+        ><%= locals.server %></b
+      >
     </nav>
 
     <div class="container-fluid">
@@ -123,6 +126,7 @@
         <div class="col-4">
           <nav class="bg-light sidebar">
             <div class="sidebar-sticky">
+              <span class="text-muted m-3 mb-3" ><b>Total Routes : </b><%= routes.length %></span>
               <input
                 type="text"
                 id="myInput"
@@ -158,10 +162,6 @@
         </div>
 
         <div class="col-8">
-          <b class="badge badge-dark mt-3" style="font-size: 25px;"
-            ><%= locals.server %></b
-          >
-
           <main role="main" style="margin-top: 5%;">
             <code>
               <h2>
@@ -175,29 +175,27 @@
               <h6 class="text-dark">Request</h6>
               <div>
                 <textarea
-                  class="jumbotron bg-dark text-white"
-                  style="width: 100%;"
+                  class="form-control bg-dark text-white"
+                  style="width: 100%;height: 200px; resize: none;"
                   id="request"
+                  disabled
                 >
-                    
-                      select
-
-                    
-                    </textarea
+select</textarea
                 >
               </div>
               <h6 class="text-dark">Response</h6>
               <div>
                 <textarea
-                  class="jumbotron bg-dark text-white"
-                  style="width: 100%;"
+                  class="form-control bg-dark text-white"
+                  style="width: 100%; height: 200px; resize: none;"
                   id="response"
+                  disabled
                 >
-                select
-
-                </textarea>
+select</textarea
+                >
               </div>
             </code>
+            <br />
           </main>
         </div>
       </div>

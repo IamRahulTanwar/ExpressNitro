@@ -1,22 +1,30 @@
 module.exports = function(cmd, name) {
-  let data ;
+  let data;
+  let c;
+  let fc;
   switch (cmd) {
     case "controller":
-      data = `class ${name} {
+      c = name.toString().split("C");
+      fc = c[0].toLowerCase();
+      data = `
+      const Schema = require("./${fc}.schema");
+      class ${name} {
             async index(req, res) {
 
               res.send(req.body);
             }
           }  
         module.exports = ${name};`;
-        break;
+      break;
     case "route":
-      data=  `const ${name} = require('../controllers/${name}')
-            const ${name.toString().toLowerCase()} = new ${name}()
+      c = name.toString().split("C");
+      fc = c[0].toLowerCase();
+      data = `const ${name} = require('./${fc}.controller')
+      const ${name.toString().toLowerCase()} = new ${name}()
             module.exports = [
             
                 {
-                    path:'/${name.toString().toLowerCase()}/:test',
+                    path:'/${fc}/:test',
                     method:'get',
                     controller: ${name.toString().toLowerCase()}.index,
                     request:{
@@ -28,12 +36,25 @@ module.exports = function(cmd, name) {
                     }
                 }
             ]`;
-            break;
+      break;
 
-            
+    case "schema":
+      data = `const mongoose = require("mongoose");
+        const Schema = mongoose.Schema
+        
+        var schemas = {}
+        
+        
+        schemas.test = mongoose.model('Test', new Schema({
+
+          role:String,
+          data:{}
+          
+      })); 
+        
+        
+        module.exports = schemas`;
   }
 
-
   return data;
-
 };
